@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Age of Conflict × World Map</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Font (system fallback available) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <meta name="description" content="Age of Conflict × World Map — procedural grand strategy demo deployable in 3 files (index.html, style.css, script.js).">
+</head>
+<body>
+  <div id="root">
+    <header>
+      <h1>Age of Conflict × World Map</h1>
+      <div class="controls">
+        <button id="btn-new">New Game</button>
+        <button id="btn-turn">Advance Turn</button>
+        <button id="btn-auto">Auto Play</button>
+        <button id="btn-save">Save</button>
+        <button id="btn-load">Load</button>
+        <button id="btn-export">Export JSON</button>
+        <input id="file-import" type="file" accept="application/json" style="display:none"/>
+      </div>
+    </header>
+
+    <main>
+      <section class="left-panel">
+        <canvas id="map" width="1200" height="700" tabindex="0"></canvas>
+        <div id="minimap"></div>
+      </section>
+
+      <aside class="right-panel">
+        <div class="panel-block">
+          <h2>World Info</h2>
+          <div id="world-stats">
+            <div>Turn: <span id="turn">0</span></div>
+            <div>Era: <span id="era">Ancient</span></div>
+            <div>Factions: <span id="fcount">0</span></div>
+          </div>
+        </div>
+
+        <div class="panel-block">
+          <h2>Factions</h2>
+          <ul id="faction-list"></ul>
+        </div>
+
+        <div class="panel-block">
+          <h2>Selected</h2>
+          <div id="selected-info">Click a tile or unit</div>
+        </div>
+
+        <div class="panel-block">
+          <h2>Timeline</h2>
+          <input id="era-slider" type="range" min="0" max="3" value="0" />
+          <div class="era-labels"><span>Ancient</span><span>Medieval</span><span>Gunpowder</span><span>Industrial</span></div>
+        </div>
+
+        <div class="panel-block">
+          <h2>Scenario Editor</h2>
+          <button id="edit-toggle">Toggle Edit Mode</button>
+          <div class="editor-help">In edit mode: click a tile to set territory or place units.</div>
+        </div>
+
+        <div class="panel-block">
+          <h2>Shortcuts</h2>
+          <ul class="shortcuts">
+            <li><b>N</b> — New Game</li>
+            <li><b>Space</b> — Advance Turn</li>
+            <li><b>A</b> — Toggle Auto Play</li>
+            <li><b>S</b> — Save</li>
+            <li><b>L</b> — Load</li>
+          </ul>
+        </div>
+      </aside>
+    </main>
+
+    <footer>
+      <small>Three-file deploy: commit these three files to a GitHub repo and enable GitHub Pages. Built for fun — enjoy!</small>
+    </footer>
+
+    <!-- tooltips / overlays -->
+    <div id="tooltip" class="tooltip" style="display:none"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
